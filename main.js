@@ -432,7 +432,7 @@ function zhuye(){
     let kami=zwk_kami;
     关闭文件();
     storage.put("卡密",zwk_kami);
-    engines.execScriptFile("悬浮窗.js");
+    engines.execScriptFile("floatingWindow.js");
     checkUpdate();
 }
 
@@ -670,7 +670,7 @@ function 关闭文件() {
     for (let i in j) {
         let dx = j[i]
         let pd = "" + dx.source
-        if (pd.match("悬浮窗.js")) {
+        if (pd.match("floatingWindow.js")) {
             log("关闭脚本对象")
             j[i].forceStop()
         }
