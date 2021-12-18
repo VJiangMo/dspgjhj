@@ -1,0 +1,35 @@
+{
+  "assets": [],
+  "build": {
+    "build_id": "8F84A28E-11",
+    "build_number": 11,
+    "build_time": 1638191680120,
+    "release": false
+  },
+  "encryptLevel": 3,
+  "useFeatures": [],
+  "icon": "res/icon.png",
+  "launchConfig": {
+    "displaySplash": true,
+    "hideLogs": false,
+    "splashIcon": "res/splashIcon.png",
+    "splashText": "攒外快大合集",
+    "stableMode": false
+  },
+  "main": "main.js",
+  "name": "攒外快大合集",
+  "optimization": {
+    "removeAccessibilityService": false,
+    "removeOpenCv": false,
+    "unusedResources": false
+  },
+  "packageName": "com.dspgjhj",
+  "permissionConfig": {
+    "requestListOnStartup": [
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+    ]
+  },
+  "scripts": {},
+  "versionCode": 23,
+  "versionName": "3.13"
+}
