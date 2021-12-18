@@ -1,10 +1,10 @@
-var storage = storages.create("攒外快网_短视频合集");
-var douyinTask=require("抖音极速版.js");
-var baiduTask=require("百度极速版.js");
-var kuaishouTask=require("快手极速版.js");
-var huoshanTask=require("抖音火山版.js");
-var caidanTask=require("彩蛋视频.js");
-var huohuoTask=require("火火视频极速版.js");
+var storage = storages.create("外快大合集");
+var douyinTask=require("dyspjsb.js");
+var baiduTask=require("bdjsb.js");
+var kuaishouTask=require("ksjsb.js");
+var huoshanTask=require("dyhsb.js");
+var caidanTask=require("cddsp.js");
+var huohuoTask=require("hhspjsb.js");
 
 var img_url = "http://zwk365.com/wp-content/uploads/2021/12/logo.png";
 

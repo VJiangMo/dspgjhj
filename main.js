@@ -1,6 +1,6 @@
 "ui";
 var 安卓版本 = device.release.split(".")[0];
-var storage = storages.create("攒外快网_短视频合集"); //创建本地储存
+var storage = storages.create("外快大合集"); //创建本地储存
 var zwk_kami="";
 var screenHeight = device.height;
 storage.put("screenHeight",screenHeight);

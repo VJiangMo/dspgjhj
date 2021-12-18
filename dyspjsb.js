@@ -1,4 +1,4 @@
-let storage = storages.create("攒外快网_短视频合集"); 
+let storage = storages.create("外快大合集"); 
 let minTime=storage.get("最短时长",5);
 let maxTime=storage.get("最长时长",15);
 let swipeHeight = device.height;
@@ -18,9 +18,6 @@ function watchDog(){
                 if(runFlag){
                     if(text("取消").exists()){
                         点击控件(text("取消"),"取消");
-                    }
-                    if(id("close_bottom_button").exists()){
-                        点击控件(id("close_bottom_button"),"关闭");
                     }
                 }else{
                     console.log("WatchDog退出.");
@@ -50,22 +47,22 @@ function mSecCount(mSec){
     SecCount(second);
 }
 
-function runCaiDanTask(){
+function runDouYinTask(){
     auto.waitFor();
-    app.launchApp('彩蛋视频');
-    toastLog("启动 彩蛋视频...");
+    app.launchApp('抖音极速版');
+    toastLog("启动 抖音极速版...");
     mSecCount(8000);
+    if(id("alr").exists()){
+        id("alr").findOne().click();
+    }
+    if(id("r6").exists()){
+        id("r6").findOne().click();
+    }
+    if(id("aho").exists()){
+        id("aho").findOne().click();
+    }
     
-    if(id("btn_confirm").exists()){
-        id("btn_confirm").findOne().click();
-    }
-    if(id("iv_close").exists()){
-        id("iv_close").findOne().click();
-    }
-   
-    closeAd();
-
-    let see_count=storage.get("彩蛋短视频数量",50);
+    let see_count=storage.get("抖音极速版数量",50);
     try{
         //开发者ID  (后台 左上角头像下方的ID)
         var DeveloperID =storage.get("DeveloperID","");
@@ -83,20 +80,20 @@ function runCaiDanTask(){
         watchDog();
         for (var i = 1; i < see_count; i++) {
             try{
-                toastLog("彩蛋视频滑动" + i + "次" + "总计:" + see_count + "次");
-                caiDanCloseAd();
-                closeGoderEgg();
+                youngWin();
+                toastLog("抖音极速版滑动" + i + "次"+"总计:"+ see_count + "次");
                 randomUpSildeScreen();
                 randomDownSildeScreen();
-                randomHeart();
                 randomFollow();
+                randomHeart();
                 slideScreenDown(screenStartX, swipeHeight*screenEndY, screenEndX, swipeHeight*screenStartY, screenDuration);
             }catch(e){
-                console.log("彩蛋视频错误1：",e);
+                console.log("抖音错误1：",e);
             }
         }
+
     }catch(e){
-        console.log("彩蛋视频错误2：",e);
+        console.log("抖音错误2：",e);
     }
     home();
 }
@@ -110,64 +107,14 @@ function slideScreenDown(startX, startY, endX, endY, pressTime) {
     sleep(delayTime);
 }
 
-function caiDanCloseAd() {
-    try {
-        if(id("close_bottom_button").exists()){
-            id("close_bottom_button").findOne().click();
-        }
-        id("video_detail_recyclerview").className("android.support.v7.widget.RecyclerView").scrollable(true).findOne().children().forEach(child => {
-            var target = child.findOne(id("iv_dialog_close"));
-            target.click();
-        });
-    } catch (e) { 
-        console.log("彩蛋视频错误：",e);
-    }
-}
-function closeGoderEgg() {
-    if (id("close_bottom_button").exists()) {
-        try {
-            toastLog("关闭金丹");
-            if(id("close_bottom_button").exists()){
-                id("close_bottom_button").findOne().click();
-            }
-        } catch (e) {
-            toastLog(e);
-        }
-
-    }
-}
-function closeAd() {
-    if(id("btn_layout").exists()){
-        id("btn_layout").findOne().child(0).click();
-        console.log("正在播放广告");
-        mSecCount(35000);
-        className("android.widget.ImageView").findOne().click();
-        back();
-    }else{
-        console.log("未找到翻倍按钮");
-    }
-    
-    if (id("btn_back").exists()) {
-        try {
-            toastLog("关闭广告");
-            if(id("btn_back").exists()){
-                id("btn_back").findOne().click();
-            }
-            if(id("close_bottom_button").exists()){
-                id("close_bottom_button").findOne().click();
-            }
-            
-        } catch (e) {
-            console.log("彩蛋视频错误：",e);
-        }
-    }
-}
-
 function youngWin() {
-    if (youngWin = text("我知道了").exists()) {
-        toastLog("点击了我知道了(青少年窗口)");
-        youngWin.click();
+    if (id("ta").exists()) {
+        id("ta").findOne().click();
+        console.log("点击了我知道了(青少年窗口)");
     };
+    if(id("alr").exists()){
+        id("alr").findOne().click();
+    }
 }
 
 function randomUpSildeScreen(){
@@ -195,23 +142,28 @@ function randomDownSildeScreen(){
 }
 
 function randomHeart() {
-    index = random(1, 10);
-    if (index == 1) {
-        toastLog("随机点赞并休息一秒");
+    index = random(1,10);
+    if (index == 5) {
+        if (id('w9').exists()) {
+            var target = id('w9').findOne();
+            target.click();
+            mSecCount(1000);
+            toastLog("随机点赞并休息一秒");
+        }
     }
 }
 
 function randomFollow() {
-    index = random(1, 100);
-    if (index == 66) {
-        toastLog("随机关注并休息一秒");
-        
-        if (id('attention').exists()) {
-            var target = id('attention').findOne();
+    index = random(1, 10);
+    if (index == 5) {
+        if (id('a4j').exists()) {
+            var target = id('a4j').findOne();
             target.click();
             mSecCount(1000);
+            toastLog("随机关注并休息一秒");
         }
     }
+    
 }
 
 function 点击控件(id, ms, t) {
@@ -249,6 +201,6 @@ function 单击(x1, y1) {
     sleep(400);
 }
 
-var caidanTask={};
-caidanTask.runCaiDanTask=()=>runCaiDanTask();
-module.exports = caidanTask;
+var douyinTask={};
+douyinTask.runDouYinTask=()=>runDouYinTask();
+module.exports = douyinTask;

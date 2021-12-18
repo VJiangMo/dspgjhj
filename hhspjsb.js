@@ -1,4 +1,4 @@
-let storage = storages.create("攒外快网_短视频合集");
+let storage = storages.create("外快大合集");
 let minTime=storage.get("最短时长",5);
 let maxTime=storage.get("最长时长",15);
 let swipeHeight = device.height;
