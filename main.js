@@ -16,7 +16,7 @@ storage.put("ApiPassword","854855");
 var SoftwareName = "zwktyjb";
 storage.put("SoftwareName","zwktyjb");
 var deadLine="";
-var version=23;
+var version=24;
 var versionName="v3.14";
 storage.put("versionName",versionName);
 
