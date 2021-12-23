@@ -544,7 +544,7 @@ ui.layout(
 
                                     <text text="2、卡密验证:" textSize="15" textSytle="bold" textColor="#000000"/>
                                     <vertical>
-                                      <input id="login_km" paddingLeft="5" textSize="15" hint="请输入您的卡密" lines="1" text="{{storage.get('卡密','')}}" gravity="left" textColor="#FF0000"/>
+                                      <input id="login_km" paddingLeft="5" textSize="15" hint="请联系QQ：286911338 获取卡密" lines="1" text="{{storage.get('卡密','')}}" gravity="left" textColor="#FF0000"/>
                                       <button id="start" text="启动脚本" textSize="15"/>
                                     </vertical>
                                 </vertical>
@@ -632,7 +632,7 @@ function checkUpdate(){
                     negativeColor: "#1E1E1E"
                   }).on("positive", () => {
                       console.log("更新");
-                      app.openUrl(msg);
+                      toastLog("请联系QQ：286911338 获取新版本！！");
                   }).on("negative", () => {
                       console.log("不更新");
                   }).show();

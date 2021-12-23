@@ -13,11 +13,11 @@
     "displaySplash": true,
     "hideLogs": false,
     "splashIcon": "res/splashIcon.png",
-    "splashText": "攒外快大合集",
+    "splashText": "擎动信息大合集",
     "stableMode": false
   },
   "main": "main.js",
-  "name": "攒外快大合集",
+  "name": "擎动信息大合集",
   "optimization": {
     "removeAccessibilityService": false,
     "removeOpenCv": false,
