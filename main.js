@@ -17,7 +17,7 @@ var SoftwareName = "zwktyjb";
 storage.put("SoftwareName","zwktyjb");
 var deadLine="";
 var version=23;
-var versionName="v3.13";
+var versionName="v3.14";
 storage.put("versionName",versionName);
 
 //卡密
