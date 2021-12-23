@@ -31,7 +31,7 @@ function runXiShuaShuaTask() {
         runFlag = true;
         watchDog()
         for (var i = 0; i < see_count; i++) {
-            sleep(random(minTime * 1000, maxTime * 1000))
+            countdown(random(minTime * 1000, maxTime * 1000))
             slide()
             log('滑动视频' + i)
             //是否有待领取的福袋
