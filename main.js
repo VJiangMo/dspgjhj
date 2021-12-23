@@ -484,6 +484,13 @@ ui.layout(
                                         <button id="抖音火山版下载" text="下载" marginLeft="15" textColor="#31ADF1" textSize="10" width="70" height="32" gravity="center"/>                                                                     
                                     </horizontal> 
                                     <horizontal>
+                                        <checkbox id="开启喜刷刷视频" text="开启喜刷刷视频" textSize="10"checked="{{storage.get('开启喜刷刷视频',true)}}" marginLeft="5"/>  
+                                        <text text="单轮刷视频数:" marginLeft="15" textSize="10" textSytle="bold" textColor="#000000"/> 
+                                        <input id="喜刷刷视频数量" textColor="#FF4C38" inputType="number" textSize="10"width="100px" paddingLeft="5"  lines="1"  text="{{storage.get('喜刷刷视频数量',50)}}" gravity="center"/>
+                                        <text text="个" marginLeft="5" textSize="10" textSytle="bold" textColor="#000000"/> 
+                                        <button id="喜刷刷视频下载" text="下载" marginLeft="15" textColor="#31ADF1" textSize="10" width="70" height="32" gravity="center"/>                                                                     
+                                    </horizontal> 
+                                    <horizontal>
                                         <checkbox id="开启百度极速版" text="开启百度极速版" textSize="10"checked="{{storage.get('开启百度极速版',true)}}" marginLeft="5"/>  
                                         <text text="单轮刷视频数:" marginLeft="15" textSize="10" textSytle="bold" textColor="#000000"/> 
                                         <input id="百度极速版数量" textColor="#FF4C38" inputType="number" textSize="10"width="100px" paddingLeft="5"  lines="1"  text="{{storage.get('百度极速版数量',50)}}" gravity="center"/>
@@ -569,6 +576,9 @@ ui.start.click(function() {
 
     storage.put("开启彩蛋视频",ui.开启彩蛋视频.checked);
     storage.put("彩蛋短视频数量",ui.彩蛋短视频数量.text());
+
+    storage.put("开启喜刷刷视频",ui.开启喜刷刷视频.checked);
+    storage.put("喜刷刷视频数量",ui.喜刷刷视频数量.text());
 
     storage.put("startX",ui.startX.text());
     storage.put("startY",ui.startY.text());
@@ -710,7 +720,7 @@ threads.start(function() {
 ui.jiaqunBtn.setSelected(true);
 
 ui.jiaqunBtn.click(function(){
-    app.openUrl("https://zwk365.com/3018");
+    app.openUrl("http://zwk365.com/EjZJwIyZXGUoS4WA");
 });
 
 ui.快手极速版下载.click(function(){
@@ -735,6 +745,10 @@ ui.彩蛋视频下载.click(function(){
 
 ui.火火视频极速版下载.click(function(){
   app.openUrl("https://zwk365.com/ZHZurWsuMjcgx3qb");
+});
+
+ui.喜刷刷视频下载.click(function(){
+  app.openUrl("http://zwk365.com/sxbgnwQdqQ3jw203");
 });
 
 // 当用户回到本界面时，resume事件会被触发

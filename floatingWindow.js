@@ -5,6 +5,7 @@ var kuaishouTask=require("ksjsb.js");
 var huoshanTask=require("dyhsb.js");
 var caidanTask=require("cddsp.js");
 var huohuoTask=require("hhspjsb.js");
+var xiShuaShuaTask=require("xishuashua.js");
 
 var img_url = "http://zwk365.com/wp-content/uploads/2021/12/logo.png";
 
@@ -119,6 +120,9 @@ function 悬浮窗() {
                         var 开启火火极速版=storage.get("开启火火极速版",false);
                         console.log("开启火火极速版"+开启火火极速版);
 
+                        var 开启喜刷刷视频=storage.get("开启喜刷刷视频",false);
+                        console.log("开启喜刷刷视频"+开启喜刷刷视频);
+
                         storage.put("首次启动快手",true);
 
                         while(true){
@@ -131,6 +135,9 @@ function 悬浮窗() {
                                 }
                                 if(true==开启抖音火山版){
                                     huoshanTask.runHuoShanTask();
+                                }
+                                if(true==开启喜刷刷视频){
+                                    xiShuaShuaTask.runXiShuaShuaTask();
                                 }
                                 if(true==开启百度极速版){
                                     baiduTask.runBaiDuTask();
