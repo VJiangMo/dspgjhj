@@ -1,4 +1,4 @@
-let storage = storages.create("快点看_短视频合集");
+let storage = storages.create("外快大合集");
 let minTime = storage.get("最短时长", 1);
 let maxTime = storage.get("最长时长", 3);
 var screenStartX = storage.get("startX", device.width / 2);
@@ -6,22 +6,18 @@ var screenStartY = storage.get("startY", 0.2);
 var screenEndX = storage.get("endX", device.width / 2);
 var screenEndY = storage.get("endY", 0.8);
 var screenDuration = storage.get("screenDuration", 500);  //滑动屏幕延时 毫秒
-var see_count = storage.get("快点看文章数量", 50);
+var see_count = storage.get("快看点视频数量", 50);
 var runFlag = false;
 var one = random(950, 1050);
 
-/**
- * 主任务
- */
-runMain()
-function runMain() {
+function runKuaiKanDianTask() {
     try {
         //检查无障碍
         auto.waitFor();
-        toast('启动快点看APP')
+        toast('启动快看点APP')
         // 1.打开app
         if (app.launchPackage('com.yuncheapp.android.pearl') == false) {
-            throw '快点看APP不存在'
+            throw '快看点APP不存在'
         }
         runFlag = true
         watchDog()
@@ -152,8 +148,6 @@ function countdown(sec) {
     }
 }
 
-
-
 /**
  * 滑动屏幕
  * @param {*手指上滑} up 
@@ -224,3 +218,6 @@ function bezier_curves(ScreenPoint, Offset) {
     return result;
 }
 
+var kuaiKanDianTask={};
+kuaiKanDianTask.runKuaiKanDianTask=()=>runKuaiKanDianTask();
+module.exports =kuaiKanDianTask;

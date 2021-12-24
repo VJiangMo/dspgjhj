@@ -6,7 +6,7 @@ var screenStartY = storage.get("startY", 0.2);
 var screenEndX = storage.get("endX", device.width / 2);
 var screenEndY = storage.get("endY", 0.8);
 var screenDuration = storage.get("screenDuration", 500);  //滑动屏幕延时 毫秒
-var see_count = storage.get("喜刷刷视频数量", 10);
+var see_count = storage.get("喜刷刷视频数量", 50);
 var runFlag = false;
 var one = random(950, 1050);
 
