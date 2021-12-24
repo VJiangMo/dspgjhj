@@ -16,8 +16,8 @@ storage.put("ApiPassword","854855");
 var SoftwareName = "zwktyjb";
 storage.put("SoftwareName","zwktyjb");
 var deadLine="";
-var version=25;
-var versionName="v3.15";
+var version=26;
+var versionName="v3.16";
 storage.put("versionName",versionName);
 
 //卡密
