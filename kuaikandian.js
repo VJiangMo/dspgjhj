@@ -1,12 +1,15 @@
+setScreenMetrics(1920, 1080)
 let storage = storages.create("外快大合集");
-let minTime =1;
-let maxTime =3;
-var screenStartX =device.width/2;
-var screenStartY =0.2;
-var screenEndX =device.width/2;
-var screenEndY =0.8;
-var screenDuration=500;  //滑动屏幕延时 毫秒
-var see_count = storage.get("快看点视频数量", 50);
+let minTime = storage.get("最短时长", 5);
+let maxTime = storage.get("最长时长", 15);
+let swipeHeight = device.height;
+
+var screenStartX = storage.get("startX", 5);
+var screenStartY = storage.get("startY", 0.3);
+var screenEndX = storage.get("endX", 5);
+var screenEndY = storage.get("endY", 0.7);
+var screenDuration = storage.get("screenDuration", 10);
+var seeCount = storage.get("快点看文章数量", 50);
 var runFlag = false;
 var one = random(950, 1050);
 
@@ -27,34 +30,52 @@ function runKuaiKanDianTask() {
         }
         sleep(one)
         //2.看文章
-        for (var j = 0; j < see_count; j++) {
-            log('第' + j + '篇文章')
+        for (var j = 1; j <= seeCount; j++) {
+            log('看第' + j + '篇文章')
+            sleep(one)
+            slide()
             var title = id('com.yuncheapp.android.pearl:id/title').findOne(one * 3)
-            if (title == false) {
+            if (!title) {
                 log('标题未找到')
-                slide()
-                sleep(one)
                 continue;
             }
-            if(title.parent().click() == false) {
+            if (title.text() == '' ||  click(title.text()) == false) {
                 log('点击标题失败')
-                slide()
-                sleep(one)
                 continue;
+            }
+            toastLog('点击标题')
+            sleep(one)
+            //判断是否为详情页面
+            if(id('com.yuncheapp.android.pearl:id/anchor_comment').findOne(one * 3)) {
+                toastLog('这不是文章不用滑动～')
+                sleep(random(minTime * 1000, maxTime * 1000))
+                back();
+                sleep(one * 2)
+                continue;
+            }
+            if (!id('com.yuncheapp.android.pearl:id/comment_layout').findOne(one * 3)) {
+                toastLog('不是新闻，重新返回推荐页面')
+                if (goHome() == false) {
+                    throw '返回失败';
+                } else {
+                    continue;
+                }
             }
             //文章滑动coun次
-            var count = random(6, 10);
-            toast('滑动' + count + '次')
-            for (var i = 0; i < count; i++) {
-                sleep(random(minTime * 1000, maxTime * 1000))
+            var count = random(7, 11);
+            toastLog('滑动' + count + '次')
+            for (var i = 1; i <= count; i++) {
+                sleep(random(minTime * 500, maxTime * 500))
+                log('阅读中' + i)
                 //领取惊喜红包
-                if (id('com.yuncheapp.android.pearl:id/reward_button').exists()) {
-                    if (id('com.yuncheapp.android.pearl:id/reward_button').findOne().text() == '点击领取') {
+                if (id('com.yuncheapp.android.pearl:id/reward_button').findOne(one)) {
+                    if (id('com.yuncheapp.android.pearl:id/reward_button').findOne().text() == '领取金币') {
                         click('领取金币')
-                        toast('发现惊喜红包')
+                        toastLog('发现惊喜红包并领取成功')
+                        sleep(one * 3)
                         if (id('com.yuncheapp.android.pearl:id/close').findOne(one * 3)) {
                             id('com.yuncheapp.android.pearl:id/close').findOne().click()
-                            log('关闭领取金币弹窗')
+                            log('关闭惊喜红包弹窗')
                             sleep(one)
                         }
                     }
@@ -64,47 +85,51 @@ function runKuaiKanDianTask() {
             }
             sleep(one)
             back()
-            //20/1概率刷新页面
-            sleep(one)
-            if (random(1, 20) == 1) {
-                toast('刷新页面')
-                logo.click()
-                sleep(one * 5)
-            } else {
-                slide()
-            }
             sleep(one)
         }
-        toast('看文章结束')
+        toastLog('看文章任务结束')
 
         //3.签到
+        sleep(one * 2)
+        if (text('福利').exists() == false) {
+            throw '福利入口查询失败'
+        }
+        click('福利')
+        sleep(one)
+        if (text('今日获得').exists() == false) {
+            throw '进入福利中心失败'
+        }
+        toastLog('进入领奖页面成功')
+        sleep(one * 3)
         slide()
-        if (text('去签到')) {
-            click('去签到')
-            log('点击去签到1')
+        sleep(one)
+        if (text('去签到').exists()) {
+            c1 = click('去签到')
+            log('点击去签到1' + c1)
         } else {
             sleep(one / 2)
             slide()
-            if (text('去签到')) {
-                click('去签到')
-                log('点击去签到2')
+            if (text('去签到').exists()) {
+                c2 = click('去签到')
+                log('点击去签到2' + c2)
+            } else {
+                toastLog('未发现签到入口，无需签到')
             }
         }
         //确认签到
         var sign = text('立即签到').findOne(one * 3);
         if (sign) {
             sign.click()
-            log('点击签到')
+            toastLog('点击签到')
             back()
         }
         sleep(one)
-        toast('任务完成')
+        toastLog('任务完成，脚本结束～～')
         runFlag = false;
 
     } catch (e) {
         runFlag = false
-        console.log(e)
-        toast(e)
+        toastLog('脚本终止：' + e)
     }
 
 }
@@ -132,6 +157,28 @@ function watchDog() {
         }
     })
 }
+
+function goHome() {
+    back()
+    sleep(one)
+    if (text('推荐').exists()) {
+        click('推荐')
+        sleep(one * 5)
+        return true;
+    } else {
+        sleep(one)
+        if (text('推荐').exists()) {
+            click('推荐')
+            toastLog('重新回到推荐页')
+            sleep(one * 5)
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 /**
  * 倒计时
  * @param {毫秒} sec 
@@ -153,18 +200,16 @@ function countdown(sec) {
  * @param {*手指上滑} up 
  */
 function slide(up) {
-    var swipeHeight = device.height;
     if (up) {
-        var qy = screenStartY * swipeHeight;
-        var zy = screenEndY * swipeHeight;
+        var qy = 0.2 * swipeHeight;
+        var zy = 0.8 * swipeHeight;
     } else {
-        var qy = screenEndY * swipeHeight;
-        var zy = screenStartY * swipeHeight;
+        var qy = 0.8 * swipeHeight;
+        var zy = 0.2 * swipeHeight;
     }
-    var zx = screenEndX;
-    var qx = screenStartX;
-    var time = screenDuration;
-
+    var zx = device.width / 2;
+    var qx = device.width / 2;
+    var time = random(500, 700);
 
     var xxy = [time];
     var point = [];
