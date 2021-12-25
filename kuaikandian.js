@@ -46,7 +46,14 @@ function runKuaiKanDianTask() {
             toastLog('点击标题')
             sleep(one)
             //判断是否为详情页面
-            if (!id('com.yuncheapp.android.pearl:id/comment_loc').findOne(one * 3)) {
+            if(id('com.yuncheapp.android.pearl:id/anchor_comment').findOne(one * 3)) {
+                toastLog('这不是文章不用滑动～')
+                sleep(random(minTime * 1000, maxTime * 1000))
+                back();
+                sleep(one * 2)
+                continue;
+            }
+            if (!id('com.yuncheapp.android.pearl:id/comment_layout').findOne(one * 3)) {
                 toastLog('不是新闻，重新返回推荐页面')
                 if (goHome() == false) {
                     throw '返回失败';
@@ -58,7 +65,7 @@ function runKuaiKanDianTask() {
             var count = random(7, 11);
             toastLog('滑动' + count + '次')
             for (var i = 1; i <= count; i++) {
-                sleep(random(minTime * 100, maxTime * 100))
+                sleep(random(minTime * 500, maxTime * 500))
                 log('阅读中' + i)
                 //领取惊喜红包
                 if (id('com.yuncheapp.android.pearl:id/reward_button').findOne(one)) {
@@ -151,12 +158,13 @@ function watchDog() {
 
 function goHome() {
     back()
-    sleep(one / 2)
+    sleep(one)
     if (text('推荐').exists()) {
         click('推荐')
         sleep(one * 5)
         return true;
     } else {
+        sleep(one)
         if (text('推荐').exists()) {
             click('推荐')
             toastLog('重新回到推荐页')
