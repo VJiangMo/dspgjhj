@@ -32,8 +32,8 @@ function runKuaiKanDianTask() {
         //2.看文章
         for (var j = 1; j <= seeCount; j++) {
             log('看第' + j + '篇文章')
-            slide()
             sleep(one)
+            slide()
             var title = id('com.yuncheapp.android.pearl:id/title').findOne(one * 3)
             if (!title) {
                 log('标题未找到')
@@ -112,6 +112,8 @@ function runKuaiKanDianTask() {
             if (text('去签到').exists()) {
                 c2 = click('去签到')
                 log('点击去签到2' + c2)
+            } else {
+                toastLog('未发现签到入口，无需签到')
             }
         }
         //确认签到
@@ -122,7 +124,7 @@ function runKuaiKanDianTask() {
             back()
         }
         sleep(one)
-        toastLog('任务完成')
+        toastLog('任务完成，脚本结束～～')
         runFlag = false;
 
     } catch (e) {
