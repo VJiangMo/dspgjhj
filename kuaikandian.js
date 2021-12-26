@@ -103,6 +103,9 @@ function runKuaiKanDianTask() {
         sleep(one * 3)
         slide()
         sleep(one)
+        if(text('立即签到').findOne(one * 3)) {
+            back();
+        }
         if (text('去签到').exists()) {
             c1 = click('去签到')
             log('点击去签到1' + c1)
