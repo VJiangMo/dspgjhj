@@ -7,8 +7,7 @@ var caidanTask=require("cddsp.js");
 var huohuoTask=require("hhspjsb.js");
 var xiShuaShuaTask=require("xishuashua.js");
 var kuaiKanDianTask=require("kuaikandian.js");
-
-var img_url = "http://zwk365.com/wp-content/uploads/qindongkeji/logo.png";
+var img_url = "http://zwk123.com/wp-content/uploads/qindongkeji/logo.png";
 
 //开发者ID  (后台 左上角头像下方的ID)
 var DeveloperID =storage.get("DeveloperID","");

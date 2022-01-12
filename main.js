@@ -730,39 +730,39 @@ threads.start(function() {
 ui.jiaqunBtn.setSelected(true);
 
 ui.jiaqunBtn.click(function(){
-    app.openUrl("http://zwk365.com/EjZJwIyZXGUoS4WA");
+    app.openUrl("http://zwk123.com/EjZJwIyZXGUoS4WA");
 });
 
 ui.快手极速版下载.click(function(){
-    app.openUrl("https://zwk365.com/hZSxnsb9");
+    app.openUrl("https://zwk123.com/hZSxnsb9");
 });
 
 ui.抖音极速版下载.click(function(){
-    app.openUrl("https://zwk365.com/eVNHN4qW");
+    app.openUrl("https://zwk123.com/eVNHN4qW");
 });
 
 ui.抖音火山版下载.click(function(){
-  app.openUrl("https://zwk365.com/TWQ6yXZNWSPK1lAB");
+  app.openUrl("https://zwk123.com/TWQ6yXZNWSPK1lAB");
 });
 
 ui.百度极速版下载.click(function(){
-  app.openUrl("http://zwk365.com/uSCYaKx0Wzs58dPd");
+  app.openUrl("http://zwk123.com/uSCYaKx0Wzs58dPd");
 });
 
 ui.彩蛋视频下载.click(function(){
-  app.openUrl("https://zwk365.com/DOOuoOQbLIyALcQc");
+  app.openUrl("https://zwk123.com/DOOuoOQbLIyALcQc");
 });
 
 ui.火火视频极速版下载.click(function(){
-  app.openUrl("https://zwk365.com/ZHZurWsuMjcgx3qb");
+  app.openUrl("https://zwk123.com/ZHZurWsuMjcgx3qb");
 });
 
 ui.喜刷刷视频下载.click(function(){
-  app.openUrl("http://zwk365.com/sxbgnwQdqQ3jw203");
+  app.openUrl("http://zwk123.com/sxbgnwQdqQ3jw203");
 });
 
 ui.快看点视频下载.click(function(){
-  app.openUrl("http://zwk365.com/ggKT40CJcLvyHvmL");
+  app.openUrl("http://zwk123.com/ggKT40CJcLvyHvmL");
 });
 
 // 当用户回到本界面时，resume事件会被触发
