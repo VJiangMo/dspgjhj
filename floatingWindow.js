@@ -8,7 +8,7 @@ var huohuoTask=require("hhspjsb.js");
 var xiShuaShuaTask=require("xishuashua.js");
 var kuaiKanDianTask=require("kuaikandian.js");
 
-var img_url = "http://zwk365.com/wp-content/uploads/2021/12/logo.png";
+var img_url = "http://zwk123.com/wp-content/uploads/2021/12/logo.png";
 
 //开发者ID  (后台 左上角头像下方的ID)
 var DeveloperID =storage.get("DeveloperID","");
